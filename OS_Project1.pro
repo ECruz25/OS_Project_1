@@ -29,15 +29,18 @@ SOURCES += \
     process.cpp \
     processmanager.cpp \
     createprocess_dialog.cpp \
-    operatingsystem.cpp
+    operatingsystem.cpp \
+    processor_emulator.cpp
 
 HEADERS += \
         mainwindow.h \
     process.h \
     processmanager.h \
     createprocess_dialog.h \
-    operatingsystem.h
+    operatingsystem.h \
+    processor_emulator.h
 
 FORMS += \
         mainwindow.ui \
-    createprocess_dialog.ui
+    createprocess_dialog.ui \
+    processor_emulator.ui

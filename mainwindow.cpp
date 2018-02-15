@@ -17,3 +17,8 @@ void MainWindow::on_pushButton_clicked()
 {
     create_process_window.show();
 }
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    process_emulator.show();
+}

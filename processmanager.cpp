@@ -42,7 +42,6 @@ void ProcessManager::delete_process(Process* process)
 
 void ProcessManager::get_processes(Process* process)
 {
-//    cout<<process->name.toStdString();
     if(process->next!= NULL)
     {
         cout<<",";
