@@ -10,9 +10,10 @@ class Process
 {
 public:
     Process();
-    Process(QString name, int execution_time, int priority);
+    Process(QString name, int execution_time, int priority, int process_id);
     Process* previous;
     Process* next;
+    int process_id;
     int priority;
     int execution_time;
     QString state;

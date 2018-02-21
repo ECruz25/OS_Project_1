@@ -2,6 +2,7 @@
 #define CREATEPROCESS_DIALOG_H
 
 #include <QDialog>
+#include <stdlib.h>
 #include "processmanager.h"
 #include "iostream"
 

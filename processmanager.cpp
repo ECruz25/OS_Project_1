@@ -7,6 +7,37 @@ ProcessManager::ProcessManager()
     size = 0;
 }
 
+int ProcessManager::create_process_id(int random_number)
+{
+    if(get_process_by_id(random_number, this->get_first_process())==NULL)
+    {
+        return random_number;
+    }
+    else
+    {
+        return create_process_id(rand()%5+1);
+    }
+}
+
+Process* ProcessManager::get_process_by_id(int id, Process* process)
+{
+    if(process==NULL)
+    {
+        return NULL;
+    }
+    else
+    {
+        if(process->process_id == id)
+        {
+            return process;
+        }
+        else
+        {
+            return get_process_by_id(id, process->next);
+        }
+    }
+}
+
 void ProcessManager::add_process(Process* process)
 {
     if(first == NULL)
@@ -56,6 +87,7 @@ Process* ProcessManager::get_first_process()
 
 void ProcessManager::sort_by_priority()
 {
+    cout<<"ordenando por prioridad"<<endl;
     Process *ptr, *dummy = new Process();
 
     if(first==NULL)
@@ -94,11 +126,11 @@ void ProcessManager::sort_by_priority()
             ptr = ptr->next;
         }
     }
-    cout<<first->execution_time<<" - "<<last->execution_time<<endl;
 }
 
 void ProcessManager::sort_by_execution_time()
 {
+    cout<<"ordenando por tiemp"<<endl;
     Process *ptr, *dummy = new Process();
 
     if(first==NULL)

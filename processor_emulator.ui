@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>1477</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,11 +16,34 @@
   <widget class="QGraphicsView" name="graphicsView">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>30</y>
-     <width>311</width>
-     <height>231</height>
+     <x>1160</x>
+     <y>110</y>
+     <width>291</width>
+     <height>301</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>50</y>
+     <width>451</width>
+     <height>192</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="setup_emulator">
+   <property name="geometry">
+    <rect>
+     <x>1170</x>
+     <y>440</y>
+     <width>90</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Setup</string>
    </property>
   </widget>
  </widget>
