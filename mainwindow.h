@@ -59,7 +59,7 @@ private:
     vector<int> processes;
     int present;
     vector<QTimer*> timers;
-    vector<int> table_times;
+    vector<double> table_times;
     vector<int> table;
 };
 

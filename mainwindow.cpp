@@ -6,8 +6,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    int num = 2;
-    cout<<floor(num/5)+(num%5==0?0:1)<<endl;
+    quantum = 1;
+    sorter = 1;
     process_manager = new ProcessManager();
 }
 
@@ -42,7 +42,10 @@ void MainWindow::on_create_process_btn_clicked()
 void MainWindow::on_setup_emulator_btn_clicked()
 {
 //    processes = new int[process_manager->size];
-
+    table.clear();
+    table_times.clear();
+    timers.clear();
+    processes.clear();
     Process* proc;
 
     switch (sorter) {
@@ -77,7 +80,7 @@ void MainWindow::on_setup_emulator_btn_clicked()
     delete proc;
     get_process_table();
 
-    ui->tableWidget->setRowCount(process_manager->size);
+    ui->tableWidget->setRowCount(table.size());
     ui->tableWidget->setColumnCount(5);
     m_TableHeader<<"Id"<<"Nombre"<<"Prioridad"<<"Tiempo CPU"<<"Estado";
     ui->tableWidget->setHorizontalHeaderLabels(m_TableHeader);
@@ -103,13 +106,13 @@ void MainWindow::on_setup_emulator_btn_clicked()
     }
     for(int x = 0; x < timers.size(); x++)
     {
-        cout<<table.at(x)<<endl;
+        //cout<<table.at(x)<<endl;
     }
 }
 
 void MainWindow::update_process_view()
 {
-    cout<<"updating: "<<processes[present]<<endl;
+    //cout<<"updating: "<<table.at(present<table.size()&&present>0 ? present : 0)<<endl;
     if(present>=0)
     {
         table.at(present) = -1;
@@ -134,13 +137,13 @@ void MainWindow::update_process_view()
             ui->tableWidget->setItem( x, 0, new QTableWidgetItem(QString::number(process_manager->get_process_by_id(int(table.at(x)),process_manager->first)->process_id)));
             ui->tableWidget->setItem( x, 1, new QTableWidgetItem(process_manager->get_process_by_id(int(table.at(x)),process_manager->first)->name));
             ui->tableWidget->setItem( x, 2, new QTableWidgetItem(QString::number(process_manager->get_process_by_id(int(table.at(x)),process_manager->first)->priority)));
-            ui->tableWidget->setItem( x, 3, new QTableWidgetItem(QString::number(process_manager->get_process_by_id(int(table.at(x)),process_manager->first)->execution_time)));
+            ui->tableWidget->setItem( x, 3, new QTableWidgetItem(QString::number(table_times.at(x))));
             ui->tableWidget->setItem( x, 4, new QTableWidgetItem(process_manager->get_process_by_id(int(table.at(x)),process_manager->first)->state));
         }
     }
     scene->addItem(group);
     ui->graphicsView->setScene(scene);
-    cout<<"present: "<<present<<endl;
+    //cout<<"present: "<<present<<endl;
     present = present + 1;
 }
 
@@ -172,6 +175,7 @@ void MainWindow::on_kill_btn_clicked()
 void MainWindow::get_process_table()
 {
     vector<int> process_positions;
+    cout<<"table size: "<<table.size()<<endl;
 
     for(int x = 0; x < processes.size(); x++)
     {
@@ -193,8 +197,8 @@ void MainWindow::get_process_table()
                 timers.push_back(new QTimer(this));
                 if(exec_time%quantum == 0)
                 {
-                    table_times.push_back(floor(exec_time / quantum));
-                    exec_time = exec_time - (floor(exec_time / quantum));
+                    table_times.push_back(quantum);
+                    exec_time = exec_time - quantum;
                 }
                 else
                 {
@@ -283,11 +287,12 @@ void MainWindow::get_process_table()
 //            }
 //        }
     }
-    for(int x = 0; x < table.size(); x++)
-    {
-        cout<<table.at(x)<<",";
-    }
-    cout<<endl;
+//    for(int x = 0; x < table.size(); x++)
+//    {
+//        //cout<<table.at(x)<<",";
+//    }
+    //cout<<endl;
+    cout<<"table size despues: "<<table.size()<<endl;
 }
 
 void MainWindow::on_creation_time_btn_clicked()
