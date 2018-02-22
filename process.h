@@ -16,6 +16,7 @@ public:
     int process_id;
     int priority;
     int execution_time;
+    int creation_order;
     QString state;
     QString name;
 };

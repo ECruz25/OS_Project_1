@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1474</width>
-    <height>606</height>
+    <width>1278</width>
+    <height>589</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <widget class="QGraphicsView" name="graphicsView">
     <property name="geometry">
      <rect>
-      <x>940</x>
+      <x>740</x>
       <y>210</y>
       <width>331</width>
       <height>311</height>
@@ -27,7 +27,7 @@
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>940</x>
+      <x>740</x>
       <y>10</y>
       <width>521</width>
       <height>171</height>
@@ -37,7 +37,7 @@
    <widget class="QPushButton" name="setup_emulator_btn">
     <property name="geometry">
      <rect>
-      <x>1050</x>
+      <x>850</x>
       <y>530</y>
       <width>90</width>
       <height>28</height>
@@ -232,7 +232,7 @@
    <widget class="QLineEdit" name="kill_edit">
     <property name="geometry">
      <rect>
-      <x>1320</x>
+      <x>1120</x>
       <y>250</y>
       <width>113</width>
       <height>28</height>
@@ -242,7 +242,7 @@
    <widget class="QPushButton" name="kill_btn">
     <property name="geometry">
      <rect>
-      <x>1330</x>
+      <x>1130</x>
       <y>290</y>
       <width>90</width>
       <height>28</height>
@@ -250,6 +250,39 @@
     </property>
     <property name="text">
      <string>Matar</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="processes_combo">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>320</y>
+      <width>161</width>
+      <height>28</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="creation_time_edit">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>370</y>
+      <width>113</width>
+      <height>28</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="creation_time_btn">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>410</y>
+      <width>90</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
     </property>
    </widget>
   </widget>

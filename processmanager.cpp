@@ -123,6 +123,26 @@ void ProcessManager::sort_by_priority()
                 ptr->priority = ptr->next->priority;
                 ptr->next->priority = dummy->priority;
             }
+            else if(ptr->priority == ptr->next->priority)
+            {
+                if (ptr->creation_order > ptr->next->creation_order)
+                {
+                    swapped = 1;
+
+                    dummy->name = ptr->name;
+                    ptr->name = ptr->next->name;
+                    ptr->next->name = dummy->name;
+
+                    dummy->execution_time = ptr->execution_time;
+                    ptr->execution_time = ptr->next->execution_time;
+                    ptr->next->execution_time = dummy->execution_time;
+
+                    dummy->priority = ptr->priority;
+                    ptr->priority = ptr->next->priority;
+                    ptr->next->priority = dummy->priority;
+                }
+
+            }
             ptr = ptr->next;
         }
     }
@@ -165,6 +185,68 @@ void ProcessManager::sort_by_execution_time()
                 dummy->priority = ptr->priority;
                 ptr->priority = ptr->next->priority;
                 ptr->next->priority = dummy->priority;
+            }
+            ptr = ptr->next;
+        }
+    }
+}
+
+void ProcessManager::sort_by_mix()
+{
+    Process *ptr, *dummy = new Process();
+
+    if(first==NULL)
+    {
+        return;
+    }
+    if(first->next==NULL)
+    {
+        return;
+    }
+
+    int swapped = 1;
+
+    while (swapped)
+    {
+        swapped = 0;
+
+        ptr = first;
+        while (ptr->next != NULL) {
+            if (ptr->priority < ptr->next->priority)
+            {
+                swapped = 1;
+
+                dummy->name = ptr->name;
+                ptr->name = ptr->next->name;
+                ptr->next->name = dummy->name;
+
+                dummy->execution_time = ptr->execution_time;
+                ptr->execution_time = ptr->next->execution_time;
+                ptr->next->execution_time = dummy->execution_time;
+
+                dummy->priority = ptr->priority;
+                ptr->priority = ptr->next->priority;
+                ptr->next->priority = dummy->priority;
+            }
+            else if(ptr->priority == ptr->next->priority)
+            {
+                if (ptr->execution_time > ptr->next->execution_time)
+                {
+                    swapped = 1;
+
+                    dummy->name = ptr->name;
+                    ptr->name = ptr->next->name;
+                    ptr->next->name = dummy->name;
+
+                    dummy->execution_time = ptr->execution_time;
+                    ptr->execution_time = ptr->next->execution_time;
+                    ptr->next->execution_time = dummy->execution_time;
+
+                    dummy->priority = ptr->priority;
+                    ptr->priority = ptr->next->priority;
+                    ptr->next->priority = dummy->priority;
+                }
+
             }
             ptr = ptr->next;
         }

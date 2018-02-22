@@ -15,6 +15,7 @@ public:
     void delete_process(Process* process);
     void sort_by_priority();
     void sort_by_execution_time();
+    void sort_by_mix();
     void get_processes(Process* process);
     int create_process_id(int random_number);
     int size;
